@@ -8,7 +8,6 @@ class ToDoInput extends React.Component {
             value: '',
             toDo: []
         };
-
         this.handleChange = this.handleChange.bind(this);
         // The reason I have to do this is because I am creating
         // a react function and the constructor handles it this way.
@@ -19,8 +18,10 @@ class ToDoInput extends React.Component {
         this.setState({value: e.target.value})
     }
     handleSubmit(e) {
+        this.state.toDo.push(this.state.value)
+        console.log(this.state.toDo);
         this.setState({
-            toDo: this.state.value
+            toDo: this.state.toDo
         });
         e.preventDefault();
     }
@@ -38,7 +39,7 @@ class ToDoInput extends React.Component {
                         value="Submit"
                     />
                 </form>
-                <List value={this.state.value}/>
+                <p>{this.state.toDo}</p>
             </div>
         )
     }
