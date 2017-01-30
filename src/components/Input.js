@@ -23,6 +23,7 @@ class ToDoInput extends React.Component {
         this.setState({
             toDo: this.state.toDo
         });
+        this.state.value = '';
         e.preventDefault();
     }
     render() {
@@ -33,13 +34,14 @@ class ToDoInput extends React.Component {
                     <input
                         type="text"
                         onChange={this.handleChange}
+                        value={this.state.value}
                     />
                     <input
                         type="submit"
                         value="Submit"
                     />
                 </form>
-                <p>{this.state.toDo}</p>
+                <List toDo={this.state.toDo} />
             </div>
         )
     }
