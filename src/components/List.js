@@ -1,10 +1,14 @@
 import React from 'react';
 import ListItem from './ListItem';
+import Delete from './Delete';
 
 function List(props) {
     const listArr = props.toDo;
     const listItem = listArr.map((item, index) =>
-            <ListItem key={index} value={item}></ListItem>
+
+            <ListItem key={index} value={item}>
+            </ListItem>
+
     )
     return (
         <ul>

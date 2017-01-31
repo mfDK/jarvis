@@ -1,5 +1,7 @@
 import React from 'react';
 import List from './List';
+import Errors from './Errors';
+import Delete from './Delete';
 
 class ToDoInput extends React.Component {
     constructor(props) {
@@ -13,6 +15,7 @@ class ToDoInput extends React.Component {
         // a react function and the constructor handles it this way.
         // figure it out when you're not high.
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
     handleChange(e) {
         this.setState({value: e.target.value})
@@ -25,6 +28,9 @@ class ToDoInput extends React.Component {
         });
         this.state.value = '';
         e.preventDefault();
+    }
+    handleDelete(e) {
+        console.log(e.target.value);
     }
     render() {
         return (
@@ -42,6 +48,7 @@ class ToDoInput extends React.Component {
                     />
                 </form>
                 <List toDo={this.state.toDo} />
+                <Errors value={this.state.value} />
             </div>
         )
     }

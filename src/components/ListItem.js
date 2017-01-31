@@ -2,7 +2,9 @@ import React from 'react';
 
 function ListItem(props) {
     return (
-        <li>{props.value}</li>
+        <li>
+            {props.value}
+        </li>
     )
 }
 
