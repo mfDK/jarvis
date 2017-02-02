@@ -1,7 +1,6 @@
 import React from 'react';
 import List from './List';
 import Errors from './Errors';
-import Delete from './Delete';
 
 class ToDoInput extends React.Component {
     constructor(props) {
@@ -24,13 +23,13 @@ class ToDoInput extends React.Component {
         this.state.toDo.push(this.state.value)
         console.log(this.state.toDo);
         this.setState({
-            toDo: this.state.toDo
+            toDo: this.state.toDo,
+            value: ''
         });
-        this.state.value = '';
         e.preventDefault();
     }
     handleDelete(e) {
-        console.log(e.target.value);
+        console.log('reached here');
     }
     render() {
         return (
