@@ -1,8 +1,6 @@
 import React from 'react';
 import Errors from './Errors';
 
-
-
 class ToDoForm extends React.Component {
     constructor(props) {
         super(props);
@@ -11,11 +9,8 @@ class ToDoForm extends React.Component {
             toDo: []
         };
         this.handleChange = this.handleChange.bind(this);
-        // The reason I have to do this is because I am creating
-        // a react function and the constructor handles it this way.
-        // figure it out when you're not high.
         this.handleSubmit = this.handleSubmit.bind(this);
-        // this.handleDelete = this.handleDelete.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
     handleChange(e) {
         this.setState({value: e.target.value})
@@ -28,17 +23,21 @@ class ToDoForm extends React.Component {
         });
         e.preventDefault();
     }
-    // handleDelete(e) {
-    //     let
-    //     this.setState({
-    //         toDo:
-    //     })
-    // }
+    handleDelete(e) {
+        console.log(e.target.value);
+        let newArr = this.state.toDo;
+        newArr.splice(e.target.value, 1);
+        console.log(newArr);
+        this.setState({
+            toDo: newArr
+        })
+    }
     render() {
         const listArr = this.state.toDo;
         const listItem = listArr.map((item, index) =>
                 <li key={index} value={item}>
                     {item}
+                    <button onClick={this.handleDelete} value={index}>Delete</button>
                 </li>
         )
         return (
