@@ -1,16 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ToDoInput from './components/Input'
+import ToDoForm from './components/Input';
 
-function App() {
+function TaskList() {
     return (
         <div>
-            <ToDoInput />
+            <ToDoForm />
         </div>
     )
 }
 
 ReactDOM.render(
-    <App />,
+    <TaskList />,
     document.getElementById("root")
 )

@@ -1,8 +1,9 @@
 import React from 'react';
-import List from './List';
 import Errors from './Errors';
 
-class ToDoInput extends React.Component {
+
+
+class ToDoForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,26 +15,37 @@ class ToDoInput extends React.Component {
         // a react function and the constructor handles it this way.
         // figure it out when you're not high.
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.handleDelete = this.handleDelete.bind(this);
+        // this.handleDelete = this.handleDelete.bind(this);
     }
     handleChange(e) {
         this.setState({value: e.target.value})
     }
     handleSubmit(e) {
-        this.state.toDo.push(this.state.value)
-        console.log(this.state.toDo);
+        console.log(this.state.value);
         this.setState({
-            toDo: this.state.toDo,
+            toDo: this.state.toDo.concat([this.state.value]),
             value: ''
         });
         e.preventDefault();
     }
-    handleDelete(e) {
-        console.log('reached here');
-    }
+    // handleDelete(e) {
+    //     let
+    //     this.setState({
+    //         toDo:
+    //     })
+    // }
     render() {
+        const listArr = this.state.toDo;
+        const listItem = listArr.map((item, index) =>
+                <li key={index} value={item}>
+                    {item}
+                </li>
+        )
         return (
             <div>
+                <ul>
+                    {listItem}
+                </ul>
                 <form onSubmit={this.handleSubmit}>
                     <label>To Do Item</label>
                     <input
@@ -46,7 +58,6 @@ class ToDoInput extends React.Component {
                         value="Submit"
                     />
                 </form>
-                <List toDo={this.state.toDo} />
                 <Errors value={this.state.value} />
             </div>
         )
@@ -55,4 +66,4 @@ class ToDoInput extends React.Component {
 
 
 
-export default ToDoInput;
+export default ToDoForm;
