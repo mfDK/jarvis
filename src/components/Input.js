@@ -28,8 +28,8 @@ class ToDoForm extends React.Component {
         return (
             <div>
                 <List toDo={this.state.toDo} />
-                <div className={style.inputForm}>
-                    <form onSubmit={this.handleSubmit}>
+                <div className={style.formContainer}>
+                    <form onSubmit={this.handleSubmit} className={style.form}>
                         <label>To Do Item</label>
                         <input
                             type="text"

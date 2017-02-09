@@ -1,0 +1,25 @@
+.liContainer {
+    height: 460px;
+    width: 100%;
+    overflow: scroll;
+}
+
+.list {
+    list-style-type: none;
+}
+
+.form {
+    position: relative;
+    bottom: 0;
+}
+
+.listItem {
+    height: 30px;
+    text-align: left;
+    padding-top: 10px;
+    margin-right: 25px;
+}
+
+.removeItem {
+    float: right;
+}

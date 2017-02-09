@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './List.css';
 
 class List extends React.Component {
     constructor(props) {
@@ -18,14 +19,14 @@ class List extends React.Component {
     render() {
         const listArr = this.props.toDo;
         const listItem = listArr.map((item, index) =>
-                <li key={index} value={item}>
+                <li key={index} value={item} className={style.listItem}>
                     {item}
-                    <button onClick={this.handleDelete} value={index}>Delete</button>
+                    <button onClick={this.handleDelete} value={index} className={style.removeItem}>Delete</button>
                 </li>
             )
         return (
-            <div>
-                <ul>
+            <div className={style.liContainer}>
+                <ul className={style.list}>
                     {listItem}
                 </ul>
             </div>
