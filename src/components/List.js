@@ -25,7 +25,9 @@ class List extends React.Component {
             )
         return (
             <div>
-                {listItem}
+                <ul>
+                    {listItem}
+                </ul>
             </div>
         )
     }
