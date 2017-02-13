@@ -30,7 +30,7 @@ class ToDoForm extends React.Component {
                 <List toDo={this.state.toDo} />
                 <div className={style.formContainer}>
                     <form onSubmit={this.handleSubmit} className={style.form}>
-                        <label>To Do Item</label>
+                        <label>Enter an Item</label>
                         <input
                             type="text"
                             onChange={this.handleChange}
