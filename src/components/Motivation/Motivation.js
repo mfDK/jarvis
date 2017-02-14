@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'whatwg-fetch';
+import Quote from './Quote';
+import style from './Motivation.css'
 
 class Motivation extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             img: ''
         }
@@ -33,8 +35,9 @@ class Motivation extends React.Component {
     }
     render() {
         return (
-            <div>
-                <img src={this.state.img} />
+            <div className={style.motivationComponent}>
+                <img src={this.state.img} className={style.spaceImg} />
+                <Quote />
             </div>
         )
     }
