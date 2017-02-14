@@ -5,6 +5,9 @@ import 'whatwg-fetch';
 class Motivation extends React.Component {
     constructor() {
         super();
+        this.state = {
+            img: ''
+        }
     }
     componentDidMount() {
         const nasa_url = 'https://api.nasa.gov/planetary/apod?api_key=';
@@ -20,6 +23,9 @@ class Motivation extends React.Component {
         })
         .then((json) => {
             console.log(json)
+            this.setState({
+                img: json.url
+            })
         })
         .catch((exception) => {
             console.log('parse failed', exception)
@@ -28,7 +34,7 @@ class Motivation extends React.Component {
     render() {
         return (
             <div>
-                Motivation component goes here
+                <img src={this.state.img} />
             </div>
         )
     }
