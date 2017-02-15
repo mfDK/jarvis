@@ -34,10 +34,13 @@ class Motivation extends React.Component {
         })
     }
     render() {
+        const loading = <div>loading...</div>;
+        const pic = <img src={this.state.img} className={style.spaceImg} />;
+        const quote = <Quote />;
         return (
             <div className={style.motivationComponent}>
-                <img src={this.state.img} className={style.spaceImg} />
-                <Quote />
+                {pic}
+                {quote}
             </div>
         )
     }
