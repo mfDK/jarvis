@@ -38,7 +38,7 @@ class Quote extends React.Component {
         })
     }
     componentDidMount() {
-        setInterval(this.getQuote, 30000);
+        setInterval(this.getQuote, 300000);
     }
     render() {
         return(

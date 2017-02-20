@@ -1,24 +1,37 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ToDoForm from './components/Input';
+import { Router, Route, hashHistory, Link } from 'react-router';
+import ToDoForm from './components/TaskList/Input';
 import Motivation from './components/Motivation/Motivation';
 import 'whatwg-fetch';
-import style from './Index.css'
+import style from './Index.css';
 
-function App() {
-    return (
-        <div>
-            <div className={style.toDo} >
-                <ToDoForm />
+class App extends React.Component {
+    constructor(props) {
+        super();
+    }
+    render() {
+        return (
+            <div>
+                <h1>Route Navigator</h1>
+                <ul role="nav">
+                    <li><Link to="/todolist" activeStyle={{ color: 'green'}} className={style.nav}>Task List</Link></li>
+                    <li><Link to="/motivation" activeStyle={{ color: 'green'}} className={style.nav}>Motivation</Link></li>
+                </ul>
+                {this.props.children}
             </div>
-            <div className={style.motivation} >
-                <Motivation />
-            </div>
-        </div>
-    )
+        )
+    }
 }
 
+
+
 ReactDOM.render(
-    <App />,
+    <Router history={hashHistory}>
+        <Route path="/" component={App}>
+            <Route path="/todolist" component={ToDoForm} />
+            <Route path="/motivation" component={Motivation} />
+        </Route>
+    </Router>,
     document.getElementById("root")
 )

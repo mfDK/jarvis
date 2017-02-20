@@ -6,5 +6,9 @@
 .motivation {
     width: 50%;
     height: 50%;
-    
+}
+
+.nav {
+    text-decoration: none;
+    color: black;
 }
