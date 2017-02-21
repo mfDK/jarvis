@@ -10,9 +10,6 @@ class Quote extends React.Component {
         }
         this.getQuote = this.getQuote.bind(this);
     }
-    componentWillMount() {
-        this.getQuote();
-    }
     getQuote() {
         const quoteApi = 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous';
         fetch(quoteApi, {
@@ -26,19 +23,24 @@ class Quote extends React.Component {
             return response.json();
         })
         .then((json) => {
-            console.log(json);
             this.setState({
                 quote: json.quote,
                 author: json.author
             })
-
         })
         .catch((exception) => {
             console.log(exception);
         })
     }
     componentDidMount() {
-        setInterval(this.getQuote, 300000);
+        const fetchQuotes = setInterval(this.getQuote, 6000)
+
+        this.setState({
+            quote: fetchQuotes
+        })
+    }
+    componentWillUnmount() {
+        clearInterval(this.state.quote);
     }
     render() {
         return(
