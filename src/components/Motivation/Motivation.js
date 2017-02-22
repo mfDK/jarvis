@@ -25,6 +25,9 @@ class Motivation extends React.Component {
         })
         .then((json) => {
             console.log(json)
+            if (json.media_type === 'video') {
+                console.log('its a video bro');
+            }
             this.setState({
                 img: json.url
             })
@@ -36,11 +39,10 @@ class Motivation extends React.Component {
     render() {
         const loading = <div>loading...</div>;
         const pic = <img src={this.state.img} className={style.spaceImg} />;
-        const quote = <Quote />;
         return (
             <div className={style.motivationComponent}>
                 {pic}
-                {quote}
+                <Quote className={style.quoteContainer}/>
             </div>
         )
     }

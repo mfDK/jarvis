@@ -1,16 +1,17 @@
 import React from 'react';
 import 'whatwg-fetch';
+import style from './Quote.css'
 
 class Quote extends React.Component {
     constructor() {
         super();
         this.state = {
-            quote: 'a quote goes here',
+            quote: '',
             author: ''
         }
-        this.getQuote = this.getQuote.bind(this);
+        this.fetchQuote = this.fetchQuote.bind(this);
     }
-    getQuote() {
+    fetchQuote() {
         const quoteApi = 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous';
         fetch(quoteApi, {
             method: 'POST',
@@ -33,19 +34,13 @@ class Quote extends React.Component {
         })
     }
     componentDidMount() {
-        const fetchQuotes = setInterval(this.getQuote, 6000)
-
-        this.setState({
-            quote: fetchQuotes
-        })
-    }
-    componentWillUnmount() {
-        clearInterval(this.state.quote);
+        this.fetchQuote();
     }
     render() {
         return(
             <div>
                 {this.state.quote} - {this.state.author}
+                <button onClick={this.fetchQuote}>New Quote</button>
             </div>
         )
     }
