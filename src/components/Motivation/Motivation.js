@@ -4,11 +4,20 @@ import 'whatwg-fetch';
 import Quote from './Quote';
 import style from './Motivation.css'
 
+function EmbedVideo(props) {
+    return (
+        <div>
+            <iframe src={props.video}></iframe>
+        </div>
+    )
+}
+
 class Motivation extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            img: ''
+            img: '',
+            video: ''
         }
     }
     componentDidMount() {
@@ -26,22 +35,25 @@ class Motivation extends React.Component {
         .then((json) => {
             console.log(json)
             if (json.media_type === 'video') {
-                console.log('its a video bro');
+                this.setState({
+                    video: json.url
+                })
+            } else {
+                this.setState({
+                    img: json.url
+                })
             }
-            this.setState({
-                img: json.url
-            })
         })
         .catch((exception) => {
             console.log('parse failed', exception)
         })
     }
     render() {
-        const loading = <div>loading...</div>;
         const pic = <img src={this.state.img} className={style.spaceImg} />;
+        const media = this.state.video === '' ? pic : <EmbedVideo video={this.state.video}/>;
         return (
             <div className={style.motivationComponent}>
-                {pic}
+                {media}
                 <Quote className={style.quoteContainer}/>
             </div>
         )
