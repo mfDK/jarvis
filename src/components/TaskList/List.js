@@ -1,5 +1,5 @@
 import React from 'react';
-import style from './List.css';
+import style from './List.sass';
 
 class List extends React.Component {
     constructor(props) {

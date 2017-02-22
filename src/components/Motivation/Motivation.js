@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import 'whatwg-fetch';
 import Quote from './Quote';
-import style from './Motivation.css'
+import style from './Motivation.sass'
 
 function EmbedVideo(props) {
     return (

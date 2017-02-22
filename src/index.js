@@ -5,7 +5,7 @@ import ToDoForm from './components/TaskList/Input';
 import Motivation from './components/Motivation/Motivation';
 import Home from './components/Home/Home';
 import 'whatwg-fetch';
-import style from './Index.css';
+import style from './Index.sass';
 
 class App extends React.Component {
     constructor(props) {

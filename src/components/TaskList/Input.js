@@ -1,6 +1,6 @@
 import React from 'react';
 import List from './List';
-import style from './Input.css';
+import style from './Input.sass';
 
 class ToDoForm extends React.Component {
     constructor(props) {
